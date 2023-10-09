@@ -18,8 +18,8 @@ function NavBar(){
     };
 
     const logout = (path) => {
-        localStorage.setItem("token", "");
-        navigate(path);
+      localStorage.removeItem('token');
+      navigate(path);
     };
 
     return (

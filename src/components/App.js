@@ -8,18 +8,28 @@ import PostArtcile from './PostArticle';
 import NavBar from './NavBar';
 
 function App() {
+  const isAuthenticated = !!localStorage.getItem('token');
   return (
     <div className="App">
       <div className='App-Body'>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route exact path="/" element={<GetArtciles />} />
-          <Route path="/create_article" element={<PostArtcile />} />
-          <Route path="/login" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </BrowserRouter>
+        <BrowserRouter>
+          {isAuthenticated ? (
+            <>
+              <NavBar />
+              <Routes>
+                <Route exact path="/" element={<GetArtciles />} />
+                <Route path="/create_article" element={<PostArtcile />} />
+                <Route path="/login" element={<Signin />} />
+                <Route path="/signup" element={<Signup />} />
+              </Routes>
+            </>
+          ) : (
+            <Routes>
+              <Route path="/login" element={<Signin />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+          )}
+        </BrowserRouter>
       </div>
     </div>
   );

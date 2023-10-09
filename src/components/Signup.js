@@ -27,7 +27,7 @@ function Signup(){
             },
         })
         .then((response) => {
-        if (response.data.status.status.code === 200) {
+        if (response.data.status.code === 200) {
             localStorage.setItem("token", `Bearer ${response.data.status.token}`);
             navigate('/', { replace: true });
         }
