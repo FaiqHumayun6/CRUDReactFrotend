@@ -47,18 +47,6 @@ function GetArtciles(){
 
   return (
     <div>
-<<<<<<< Updated upstream
-      <button onClick={handleClick}>Click</button>
-      <ul>
-        {articles.map((article) => (
-          <ol>
-          <li key={article.id}>
-            <h3 className="">{article.name}</h3>
-          </li>
-          </ol>
-        ))}
-      </ul>
-=======
       <form className="form-group">
         <input type="text" className="form-control" value={title} placeholder="Enter title of new article" onChange={(e) => setTitle(e.target.value)}/>
         <button type="button" onClick={handleClick} className="btn btn-primary">Submit</button>
@@ -77,7 +65,6 @@ function GetArtciles(){
           ))}
         </div>
       </div>
->>>>>>> Stashed changes
     </div>
   );
 

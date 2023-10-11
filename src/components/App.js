@@ -10,17 +10,6 @@ function App() {
   return (
     <div className="App">
       <div className='App-Body'>
-<<<<<<< Updated upstream
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route exact path="/" element={<GetArtciles />} />
-          <Route path="/create_article" element={<PostArtcile />} />
-          <Route path="/login" element={<Signin />} />
-          <Route path="/signup" element={<Signup />} />
-        </Routes>
-      </BrowserRouter>
-=======
         <BrowserRouter>
           {isAuthenticated ? (
             <>
@@ -38,7 +27,6 @@ function App() {
             </Routes>
           )}
         </BrowserRouter>
->>>>>>> Stashed changes
       </div>
     </div>
   );
