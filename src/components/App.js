@@ -7,6 +7,7 @@ import GetArtciles from './GetArticles';
 import NavBar from './NavBar';
 
 function App() {
+  const isAuthenticated = !!localStorage.getItem('token');
   return (
     <div className="App">
       <div className='App-Body'>

@@ -28,7 +28,9 @@ function GetArtciles(){
         .post(
           'http://localhost:3001/articles',
           {
-            name: title,
+            article: {
+            name: title
+            }
           },
           {
             headers: {
@@ -51,12 +53,12 @@ function GetArtciles(){
         <input type="text" className="form-control" value={title} placeholder="Enter title of new article" onChange={(e) => setTitle(e.target.value)}/>
         <button type="button" onClick={handleClick} className="btn btn-primary">Submit</button>
       </form>
-      <div class="container">    
-        <div class="row">
+      <div className="container">    
+        <div className="row">
           {articles.map((article) => (
-            <div class="col-sm-4">
-              <div class="panel panel-primary">
-                <h1 class="panel-heading">Article</h1>
+            <div className="col-sm-4">
+              <div className="panel panel-primary">
+                <h1 className="panel-heading">Article</h1>
                   <div key={article.id}>
                     <h6 className="list-group-item">{article.name}</h6>
                   </div>
