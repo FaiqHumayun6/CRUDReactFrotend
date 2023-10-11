@@ -1,30 +1,53 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom';
 
 function GetArtciles(){
   const [articles, setArticles] = useState([]);
-  const navigate = useNavigate();
+  const [title, setTitle] = useState("");
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    getArticles();
+  }, []);
+
+  const getArticles = () => {
     axios.get("http://localhost:3001/articles", {headers: {
         'Authorization': token 
       }})
       .then((response) => {
+        console.log(response);
         setArticles(response.data.status.data);
       })
       .catch((error) => {
         console.error("Error fetching articles:", error);
       });
-  }, []);
+  }
 
   const handleClick = () => {
-    navigate('/create_article', { replace: true });
+    axios
+        .post(
+          'http://localhost:3001/articles',
+          {
+            name: title,
+          },
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        )
+        .then((response) => {
+          getArticles();
+          console.log(response);
+        }) 
+        .catch((error) => {
+          console.error("Error creating articles:", error);
+        });
   };
 
   return (
     <div>
+<<<<<<< Updated upstream
       <button onClick={handleClick}>Click</button>
       <ul>
         {articles.map((article) => (
@@ -35,6 +58,26 @@ function GetArtciles(){
           </ol>
         ))}
       </ul>
+=======
+      <form className="form-group">
+        <input type="text" className="form-control" value={title} placeholder="Enter title of new article" onChange={(e) => setTitle(e.target.value)}/>
+        <button type="button" onClick={handleClick} className="btn btn-primary">Submit</button>
+      </form>
+      <div class="container">    
+        <div class="row">
+          {articles.map((article) => (
+            <div class="col-sm-4">
+              <div class="panel panel-primary">
+                <h1 class="panel-heading">Article</h1>
+                  <div key={article.id}>
+                    <h6 className="list-group-item">{article.name}</h6>
+                  </div>
+                </div>
+            </div>
+          ))}
+        </div>
+      </div>
+>>>>>>> Stashed changes
     </div>
   );
 

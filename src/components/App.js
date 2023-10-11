@@ -4,13 +4,13 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Signin from "./Signin";
 import Signup from "./Signup";
 import GetArtciles from './GetArticles';
-import PostArtcile from './PostArticle';
 import NavBar from './NavBar';
 
 function App() {
   return (
     <div className="App">
       <div className='App-Body'>
+<<<<<<< Updated upstream
       <BrowserRouter>
         <NavBar />
         <Routes>
@@ -20,6 +20,25 @@ function App() {
           <Route path="/signup" element={<Signup />} />
         </Routes>
       </BrowserRouter>
+=======
+        <BrowserRouter>
+          {isAuthenticated ? (
+            <>
+              <NavBar />
+              <Routes>
+                <Route exact path="/" element={<GetArtciles />} />
+                <Route path="/login" element={<Signin />} />
+                <Route path="/signup" element={<Signup />} />
+              </Routes>
+            </>
+          ) : (
+            <Routes>
+              <Route path="/login" element={<Signin />} />
+              <Route path="/signup" element={<Signup />} />
+            </Routes>
+          )}
+        </BrowserRouter>
+>>>>>>> Stashed changes
       </div>
     </div>
   );
