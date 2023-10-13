@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+
 function GetArtciles(){
   const [articles, setArticles] = useState([]);
   const [title, setTitle] = useState("");
@@ -10,6 +11,19 @@ function GetArtciles(){
   useEffect(() => {
     getArticles();
   }, []);
+
+  const getArticles = () => {
+    axios.get("http://localhost:3001/articles", {headers: {
+        'Authorization': token 
+      }})
+      .then((response) => {
+        console.log(response);
+        setArticles(response.data.status.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching articles:", error);
+      });
+  }
 
   const getArticles = () => {
     axios
@@ -30,6 +44,9 @@ function GetArtciles(){
           'http://localhost:3001/articles',
           {
             name: title,
+            article: {
+            name: title
+            }
           },
           {
             headers: {
@@ -50,7 +67,7 @@ function GetArtciles(){
       <form className="form-group">
         <input type="text" className="form-control" value={title} placeholder="Enter title of new article" onChange={(e) => setTitle(e.target.value)}/>
         <button type="button" onClick={handleClick} className="btn btn-primary">Submit</button>
-      </form>
+      </form
       <div class="container">    
         <div class="row">
           {articles.map((article) => (
