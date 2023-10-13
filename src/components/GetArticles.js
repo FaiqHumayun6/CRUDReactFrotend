@@ -13,19 +13,6 @@ function GetArtciles(){
   }, []);
 
   const getArticles = () => {
-    axios.get("http://localhost:3001/articles", {headers: {
-        'Authorization': token 
-      }})
-      .then((response) => {
-        console.log(response);
-        setArticles(response.data.status.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching articles:", error);
-      });
-  }
-
-  const getArticles = () => {
     axios
         .get("http://localhost:3001/articles", {headers: {
           'Authorization': token 
@@ -67,7 +54,7 @@ function GetArtciles(){
       <form className="form-group">
         <input type="text" className="form-control" value={title} placeholder="Enter title of new article" onChange={(e) => setTitle(e.target.value)}/>
         <button type="button" onClick={handleClick} className="btn btn-primary">Submit</button>
-      </form
+      </form>
       <div class="container">    
         <div class="row">
           {articles.map((article) => (
