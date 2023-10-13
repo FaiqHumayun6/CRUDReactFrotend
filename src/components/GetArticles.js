@@ -26,15 +26,13 @@ function GetArtciles(){
   return (
     <div>
       <button onClick={handleClick}>Click</button>
-      <ul>
+      <ol>
         {articles.map((article) => (
-          <ol>
-          <li key={article.id}>
+          <li key={article.id}> {/* Add key prop here */}
             <h3 className="">{article.name}</h3>
           </li>
-          </ol>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 
